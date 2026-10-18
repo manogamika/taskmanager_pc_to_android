@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/desktopLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <!-- Container Card for Desktop Stats (Full Width Glassmorphic in Landscape) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="10dp"
+            android:background="#25000000"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- State A: Not Connected / QR Connection Prompt Panel -->
+            <LinearLayout
+                android:id="@+id/layoutNotConnected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="#C0000000"
+                    android:shadowDx="1.5"
+                    android:shadowDy="2.0"
+                    android:shadowRadius="5"
+                    android:text="🖥️ Belum Terhubung ke PC"
+                    android:textColor="#FFAA00"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:shadowColor="#C0000000"
+                    android:shadowDx="1.5"
+                    android:shadowDy="2.0"
+                    android:shadowRadius="5"
+                    android:text="Jalankan 'PCStatHost.exe' atau 'python host.py' di PC Anda dan pindai Kode QR untuk melihat statistik Desktop Overview secara realtime."
+                    android:textColor="#E6FFFFFF"
+                    android:textSize="13sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarDesktopLoading"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="8dp"
+                    android:indeterminateTint="#00FF66"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnScanQr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#00AA44"
+                        android:text="Pindai Kode QR"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btnManualIpDesktop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#444444"
+                        android:text="Input IP Manual"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- State B: Connected Real Desktop Stats Panel (Full Width 2 Columns in Landscape) -->
+            <LinearLayout
+                android:id="@+id/layoutDesktopStats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Connection Status Banner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2200FF66"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#C0000000"
+                        android:shadowDx="1.5"
+                        android:shadowDy="2.0"
+                        android:shadowRadius="5"
+                        android:text="Status PC: "
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDesktopStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#C0000000"
+                        android:shadowDx="1.5"
+                        android:shadowDy="2.0"
+                        android:shadowRadius="5"
+                        android:text="● Terhubung"
+                        android:textColor="#00FF66"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="#33FFFFFF" />
+
+                <!-- 2-Column Grid for Landscape -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <!-- LEFT COLUMN: System, CPU & GPU -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingEnd="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#C0000000"
+                            android:shadowDx="1.5"
+                            android:shadowDy="2.0"
+                            android:shadowRadius="5"
+                            android:text="Sistem &amp; Prosesor"
+                            android:textColor="#E6FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Host PC:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPcHost"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="PC-Desktop"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Penggunaan CPU:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvCpuUsageDesktop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="0.0%"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Suhu CPU:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvCpuTempDesktop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="0.0 °C"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Penggunaan RAM:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvRamUsageDesktop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="0 MB / 0 MB (0%)"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="6dp"
+                            android:background="#33FFFFFF" />
+
+                        <!-- GPU -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#C0000000"
+                            android:shadowDx="1.5"
+                            android:shadowDy="2.0"
+                            android:shadowRadius="5"
+                            android:text="Kartu Grafis (GPU)"
+                            android:textColor="#E6FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Kartu Grafis:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvGpuName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="N/A"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Penggunaan GPU:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvGpuUsage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="0.0%"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Divider Line -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="6dp"
+                        android:background="#33FFFFFF" />
+
+                    <!-- RIGHT COLUMN: Storage, FPS & Volume Control -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#C0000000"
+                            android:shadowDx="1.5"
+                            android:shadowDy="2.0"
+                            android:shadowRadius="5"
+                            android:text="Penyimpanan &amp; Performansi"
+                            android:textColor="#E6FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Kecepatan Jaringan:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvNetworkDesktop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="⬇️ 0.0 KB/s  ⬆️ 0.0 KB/s"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="FPS PC / Layar:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvFpsDesktop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="-- FPS"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="Penyimpanan:"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvDriveC"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:shadowColor="#C0000000"
+                                android:shadowDx="1.5"
+                                android:shadowDy="2.0"
+                                android:shadowRadius="5"
+                                android:text="-- GB / -- GB (--%)"
+                                android:textColor="#00FF66"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="6dp"
+                            android:background="#33FFFFFF" />
+
+                        <!-- Volume Control Section -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:shadowColor="#C0000000"
+                                    android:shadowDx="1.5"
+                                    android:shadowDy="2.0"
+                                    android:shadowRadius="5"
+                                    android:text="🔊 Volume Master PC:"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvVolumeValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:shadowColor="#C0000000"
+                                    android:shadowDx="1.5"
+                                    android:shadowDy="2.0"
+                                    android:shadowRadius="5"
+                                    android:text="50%"
+                                    android:textColor="#00FF66"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <SeekBar
+                                android:id="@+id/seekBarVolume"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:max="100"
+                                android:progress="50"
+                                android:progressTint="#00FF66"
+                                android:thumbTint="#00FF66" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Top-Right Menu Button (Placed at end for top Z-index & touch priority) -->
+    <ImageButton
+        android:id="@+id/btnBurgerDesktop"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/menu_desc"
+        android:elevation="8dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

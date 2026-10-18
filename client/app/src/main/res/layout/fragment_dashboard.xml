@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dashboardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- Dashboard Container (Ultra-Light Glassmorphic Blend) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="#25000000"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="450dp">
+
+        <!-- Time -->
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:shadowColor="#C0000000"
+            android:shadowDx="1.5"
+            android:shadowDy="2.0"
+            android:shadowRadius="5"
+            android:text="00:00:00"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <!-- Date -->
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:shadowColor="#C0000000"
+            android:shadowDx="1.5"
+            android:shadowDy="2.0"
+            android:shadowRadius="5"
+            android:text="Monday, 01 Jan 2024"
+            android:textColor="#E6FFFFFF"
+            android:textSize="16sp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="16dp"
+            android:background="#33FFFFFF" />
+
+        <!-- CPU Usage -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="CPU Usage:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCpuUsage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="15%"
+                android:textColor="#00FF66"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- RAM Usage -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="RAM Usage:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRamUsage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="0 MB / 0 MB"
+                android:textColor="#00FF66"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Temperature -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="Suhu HP:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="0.0 °C"
+                android:textColor="#00FF66"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Battery Usage -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="Baterai:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBatteryUsage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="100%"
+                android:textColor="#00FF66"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- FPS Layar HP -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="FPS Layar:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvFpsMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#C0000000"
+                android:shadowDx="1.5"
+                android:shadowDy="2.0"
+                android:shadowRadius="5"
+                android:text="60 FPS"
+                android:textColor="#00FF66"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Top-Right Menu Button (Placed at end for top Z-index & touch priority) -->
+    <ImageButton
+        android:id="@+id/btnBurger"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/menu_desc"
+        android:elevation="8dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

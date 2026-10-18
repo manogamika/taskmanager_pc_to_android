@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">pcstat</string>
+    <string name="immersive_title">PCStat - Immersive Landscape Fullscreen</string>
+    <string name="menu_desc">Menu</string>
+    <string name="config_title">Configuration</string>
+    <string name="exit_button">Exit</string>
+    <string name="change_background">Change Background</string>
+    <string name="back_desc">Back</string>
+    <string name="screen_orientation">Screen Orientation</string>
+    <string name="landscape">Landscape</string>
+    <string name="portrait">Portrait</string>
+    <string name="language">Language</string>
+    <string name="app_list_title">Running Apps</string>
+</resources>

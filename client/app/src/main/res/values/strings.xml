@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">pcstat</string>
+    <string name="immersive_title">PCStat - Immersive Landscape Fullscreen</string>
+    <string name="menu_desc">Menu</string>
+    <string name="config_title">Pengaturan</string>
+    <string name="exit_button">Keluar</string>
+    <string name="change_background">Ganti Background</string>
+    <string name="back_desc">Kembali</string>
+    <string name="screen_orientation">Orientasi Layar</string>
+    <string name="landscape">Landscape</string>
+    <string name="portrait">Portrait</string>
+    <string name="language">Bahasa</string>
+    <string name="app_list_title">Daftar Aplikasi</string>
+</resources>
